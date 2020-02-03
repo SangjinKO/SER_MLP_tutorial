@@ -11,7 +11,6 @@ from sklearn.metrics import accuracy_score
 def extract_feature(file_name, mfcc, chroma, mel):
     with soundfile.SoundFile(file_name) as sound_file:
         X = sound_file.read(always_2d=False, dtype="float32", out=None)
-        print("XXXXXXXX   :", X)
         sample_rate = sound_file.samplerate
         if chroma:
             stft = np.abs(librosa.stft(X))
@@ -50,14 +49,7 @@ observed_emotions = ['calm', 'happy', 'fearful', 'disgust']
 def load_data(test_size=0.2):
     x, y = [], []
     for file in glob.glob("E:\\EMOTION\\data_tutorial\\Actor_*\\*.wav"):
-        # for file in glob.glob("D:\\DataFlair\\ravdess data\\Actor_*\\*.wav"):
         file_name = os.path.basename(file)
-        print("File in the loop", file_name)
-
-        # print("Actually used file", file_name)
-        # file_name=os.path.basename("03-01-02-01-01-02-01.wav")
-        # file = 'E:\\EMOTION\\test\\Actor_01\\03-01-01-01-01-01-01.wav'
-
         emotion = emotions[file_name.split("-")[2]]
         if emotion not in observed_emotions:
             continue
