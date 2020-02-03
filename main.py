@@ -7,7 +7,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
 
 
-# DataFlair - Extract features (mfcc, chroma, mel) from a sound file
+# Feature Extraction
 def extract_feature(file_name, mfcc, chroma, mel):
     with soundfile.SoundFile(file_name) as sound_file:
         X = sound_file.read(always_2d=False, dtype="float32", out=None)
@@ -29,7 +29,7 @@ def extract_feature(file_name, mfcc, chroma, mel):
     return result
 
 
-# DataFlair - Emotions in the RAVDESS dataset
+# SAVEE
 emotions = {
     '01': 'neutral',
     '02': 'calm',
@@ -40,12 +40,11 @@ emotions = {
     '07': 'disgust',
     '08': 'surprised'
 }
-# DataFlair - Emotions to observe
+# Label (Emotions to observe)
 observed_emotions = ['calm', 'happy', 'fearful', 'disgust']
 
 
-# DataFlair - Load the data and extract features for each sound file
-
+# Load Data & Call Feature Extraction
 def load_data(test_size=0.2):
     x, y = [], []
     for file in glob.glob("E:\\EMOTION\\data_tutorial\\Actor_*\\*.wav"):
@@ -59,26 +58,27 @@ def load_data(test_size=0.2):
     return train_test_split(np.array(x), y, test_size=test_size, random_state=9)
 
 
-# DataFlair - Split the dataset
+# Split the dataset
 x_train, x_test, y_train, y_test = load_data(test_size=0.25)
 
-# DataFlair - Get the shape of the training and testing datasets
+# Shape of the training and testing datasets
 print((x_train.shape[0], x_test.shape[0]))
 
-# DataFlair - Get the number of features extracted
+# Number of features extracted
 print(f'Features extracted: {x_train.shape[1]}')
 
-# DataFlair - Initialize the Multi Layer Perceptron Classifier
+# Initialize the Multi Layer Perceptron Classifier
 model = MLPClassifier(alpha=0.01, batch_size=256, epsilon=1e-08, hidden_layer_sizes=(300,), learning_rate='adaptive',
                       max_iter=500)
 
-# DataFlair - Train the model
+# Train
 model.fit(x_train, y_train)
 
-# DataFlair - Predict for the test set
+# Predict for the test set
 y_pred = model.predict(x_test)
 
-# DataFlair - Calculate the accuracy of our model
+# Calculate the accuracy of our model
 accuracy = accuracy_score(y_true=y_test, y_pred=y_pred)
-# DataFlair - Print the accuracy
+
+# Result
 print("Accuracy: {:.2f}%".format(accuracy * 100))
