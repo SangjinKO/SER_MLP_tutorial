@@ -8,6 +8,8 @@ Corpus: RAVDESS
 
 Train (Features): mfcc, chroma, mel
 
+Parameter setting: alpha=0.01, batch_size=256, epsilon=1e-08, hidden_layer_sizes=(300,), learning_rate='adaptive', max_iter=500
+
 Result: Accuracy: 48.3%
 
 *MEMO: This is very simple-tutorial code to learn fundamental ideas about how to establish a MLP model
