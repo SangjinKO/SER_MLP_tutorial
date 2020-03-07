@@ -4,10 +4,10 @@ Speech Emotion Recognition System using MLP (Multilayer Perception)
 
 Dependencies: librosa, soundfile, numpy, sklearn, pyaudio
 
-Corpos: RAVDESS
+Corpus: RAVDESS
 
 Train (Features): mfcc, chroma, mel
 
 Result: Accuracy: 48.3%
 
-*MEMO: Files should pro-processed so that they have lowered sample rates (than original files)
+*MEMO: The files (corpus) was pro-processed so that they have lowered sample rates (than original files)
