@@ -8,4 +8,4 @@ Corpos: RAVDESS
 
 Train (Features): mfcc, chroma, mel
 
-Result: Accuracy: 70.31%
+Result: Accuracy: 48.33%
