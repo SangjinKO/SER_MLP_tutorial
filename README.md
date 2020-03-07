@@ -9,3 +9,5 @@ Corpos: RAVDESS
 Train (Features): mfcc, chroma, mel
 
 Result: Accuracy: 48.3%
+
+*MEMO: Files should pro-processed so that they have lowered sample rates (than original files)
