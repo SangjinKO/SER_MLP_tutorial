@@ -41,13 +41,13 @@ emotions = {
     '08': 'surprised'
 }
 # Label (Emotions to observe)
-observed_emotions = ['calm', 'happy', 'fearful', 'disgust']
+observed_emotions = ['neutral','calm', 'happy','sad', 'angry','fearful', 'disgust','surprised']
 
 
 # Load Data & Call Feature Extraction
 def load_data(test_size=0.2):
     x, y = [], []
-    for file in glob.glob("E:\\EMOTION\\data_tutorial\\Actor_*\\*.wav"):
+    for file in glob.glob("E:\\EMOTION\\RAVDESS_norm\\Actor_*\\*.wav"):
         file_name = os.path.basename(file)
         emotion = emotions[file_name.split("-")[2]]
         if emotion not in observed_emotions:
@@ -57,6 +57,7 @@ def load_data(test_size=0.2):
         y.append(emotion)
     return train_test_split(np.array(x), y, test_size=test_size, random_state=9)
 
+print("LET'S START")
 
 # Split the dataset
 x_train, x_test, y_train, y_test = load_data(test_size=0.25)
